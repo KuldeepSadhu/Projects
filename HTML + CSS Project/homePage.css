@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20px;
+    margin: 20px;
+    /* background-color: black; */
+    background-color: #222;
+    color: whitesmoke;
+    width: 90vw;
+}
+
+.header {
+    display: block;
+    padding-bottom: 90px;
+}
+
+.logo {
+    height: auto;
+    width: auto;
+    float: left;
+}
+
+.title span {
+    --total: calc(var(--duration) + var(--delay));
+    position: relative;
+    display: block;
+    color: transparent;
+    overflow: hidden;
+    animation: revealText 1s var(--total) forwards;
+}
+
+.title span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scalex(0);
+    transform-origin: left;
+    background: red;
+    animation:
+        rollIn var(--duration) var(--delay) forwards,
+        rollOut var(--duration) var(--total) forwards;
+}
+
+.title span:nth-child(2)::after {
+    border-top: 3px solid red;
+}
+
+@keyframes revealText {
+    to {
+        color: red;
+    }
+
+    from {
+        color: white;
+    }
+}
+
+@keyframes rollIn {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes rollOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(105%);
+    }
+}
+
+h2 {
+    color: #ff2e2e;
+}
+
+nav {
+    margin-left: 950px;
+    margin-top: 20px;
+    position: relative;
+    /* top: -35px; */
+    width: 515px;
+    height: 50px;
+    background-color: #222;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    position: relative;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    padding: 0 23px;
+    z-index: 1;
+}
+
+nav span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95px;
+    height: 100%;
+    background: linear-gradient(45deg, #861111, #f7320a);
+    border-radius: 8px;
+    transition: .5s;
+}
+
+nav a:nth-child(1):hover~span{
+    left: 0;
+}
+nav a:nth-child(2):hover~span{
+    left: 88px;
+    width: 90px;
+}
+nav a:nth-child(3):hover~span{
+    left: 186px;
+    width: 110px;
+}
+nav a:nth-child(4):hover~span{
+    left: 300px;
+    width: 90px;
+}
+nav a:nth-child(5):hover~span{
+    left: 405px;
+    width: 100px;
+}
+ult {
+    position: relative;
+    left: 450px;
+    top: -300px;
+}
+
+.zoom {
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.zoom img {
+    object-fit: cover;
+    transition: transform 0.8s;
+}
+
+.zoom:hover img {
+    transform: scale(1.1);
+}
+
+.footer {
+    margin-top: 35px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 25vh;
+    padding-top: 35px;
+}
